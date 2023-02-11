@@ -1,32 +1,45 @@
 import { dirname, join } from "path";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 import { promises as fs } from "fs";
-import { spawn } from "child_process";
-import { cwd } from "process";
+import { exec } from "child_process";
+import { CronTime } from "cron";
 
 global.__filename = fileURLToPath(import.meta.url);
 global.__dirname = dirname(__filename);
 
 const APPS_PATH = join(__dirname, "apps");
 
+function startsWithinTheNextSecond(schedule)
+{
+	const cronTime = new CronTime(schedule);
+	const now = +new Date();
+	const nextDate = cronTime.sendAt();
+	return nextDate <= now + 1000;
+}
+
 (async function()
 {
-	const day = (new Date()).getDay();
-	if (day < 1 || day > 5)
-		throw new Error("Not a weekday");
-	
-	const apps = await fs.readdir(APPS_PATH);
-	if (apps.length === 0)
-		throw new Error("No apps to launch");
-	
-	for (const appName of apps)
+	const appGroups = await fs.readdir(APPS_PATH) ;
+	if (appGroups.length === 0)
+		throw new Error("No apps found");
+
+	for (const groupName of appGroups)
 	{
-		console.log(join(APPS_PATH, appName));
-		spawn(join(APPS_PATH, appName), [], {
-			cwd: cwd(),
-			detached: true,
-			shell: true,
-			stdio: "ignore"
-		}).unref();
+		const groupPath = join(APPS_PATH, groupName);
+		const schedule = (await fs.readFile(join(groupPath, "schedule.txt"), "utf8")).trim();
+
+		if (!startsWithinTheNextSecond(schedule))
+			continue;
+
+		const appNames = (await fs.readdir(groupPath)).filter(name => name !== "schedule.txt");
+		let failedApps = {};
+
+		for (const appName of appNames)
+		{
+			exec(`start "" "${join(groupPath, appName)}"`, e => e && (failedApps[appName] = e));
+		}
+
+		if (Object.keys(failedApps).length > 0)
+			console.error(`Failed to launch apps from group "${groupName}": ${failedApps}`);
 	}
 })();
