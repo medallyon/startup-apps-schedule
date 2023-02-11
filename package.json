@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "cron": "^2.2.0",
     "regedit": "^5.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0"
   }
 }
