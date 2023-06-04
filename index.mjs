@@ -11,7 +11,7 @@ const APPS_PATH = join(__dirname, "apps");
 
 function startsWithinTheNextSecond(schedule)
 {
-	const cronTime = new CronTime(schedule);
+	const cronTime = new CronTime(schedule, "Europe/London");
 	const now = +new Date();
 	const nextDate = cronTime.sendAt();
 	return nextDate <= now + 1000;
