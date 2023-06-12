@@ -26,6 +26,9 @@ function startsWithinTheNextSecond(schedule)
 	for (const groupName of appGroups)
 	{
 		const groupPath = join(APPS_PATH, groupName);
+		if (!(await fs.stat(groupPath)).isDirectory())
+			continue;
+
 		const schedule = (await fs.readFile(join(groupPath, "schedule.txt"), "utf8")).trim();
 
 		if (!startsWithinTheNextSecond(schedule))
