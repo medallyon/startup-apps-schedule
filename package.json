@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"start": "node index.mjs"
+	},
   "dependencies": {
     "cron": "^2.2.0",
     "regedit": "^5.1.1"
