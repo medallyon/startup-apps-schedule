@@ -6,7 +6,8 @@ We all have apps & programs that launch on Startup. Some of us have apps that we
 
 ### Pre-requisites
 
-1. Download the [latest release](https://github.com/medallyon/startup-apps-schedule/releases) or clone this repository:
+1. Install Node.js: https://nodejs.org/en
+2. Download the [latest release](https://github.com/medallyon/startup-apps-schedule/releases) or clone this repository:
 ```shell
 git clone https://github.com/medallyon/startup-apps-schedule.git
 ```
