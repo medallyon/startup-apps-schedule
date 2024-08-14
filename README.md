@@ -14,6 +14,8 @@ We all have apps & programs that launch on Startup. Some of us have apps that we
 2. Create a new text file inside this folder named `schedule.txt` and add your schedule to the first line, then save the file.
    - Note: The schedule is in the form of a cron schedule. When your machine starts and this app runs, it checks whether the current time falls within the schedule.
    - Note: If the time of startup falls within the time of the cron schedule, all apps/executables/shortcuts in this folder are started automatically.
+  
+For examples, look no further than the existing [`/apps`](https://github.com/medallyon/startup-apps-schedule/tree/master/apps) directory.
 
 ### Add the scheduler to automatic startup
 
@@ -32,6 +34,7 @@ If you'd like to contribute, follow the standard open-source contributing proces
 
 1. [Create a fork](https://github.com/medallyon/startup-apps-schedule/fork) of this repository.
 2. Make any changes you'd like.
-3. [Create a new pull request](https://github.com/medallyon/startup-apps-schedule/compare) and await a review.
+3. If applicable, test your changes to make sure it works.
+4. [Create a new pull request](https://github.com/medallyon/startup-apps-schedule/compare) and await a review.
 
 Thank you!
