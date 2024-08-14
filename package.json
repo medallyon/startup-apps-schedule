@@ -1,12 +1,18 @@
 {
+	"name": "startup-apps-cron",
+	"version": "1.0.0",
+	"description": "Small Node.js applet to run a list of apps on startup defined by a cron schedule.",
+	"main": "index.mjs",
+	"author": "medallyon",
+	"license": "MIT",
 	"scripts": {
 		"start": "node index.mjs"
 	},
-  "dependencies": {
-    "cron": "^2.2.0",
-    "regedit": "^5.1.1"
-  },
-  "devDependencies": {
-    "eslint": "^8.34.0"
-  }
+	"dependencies": {
+		"cron": "^2.2.0",
+		"regedit": "^5.1.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.34.0"
+	}
 }
