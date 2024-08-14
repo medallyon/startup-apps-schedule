@@ -6,7 +6,10 @@ We all have apps & programs that launch on Startup. Some of us have apps that we
 
 ### Pre-requisites
 
-1. Download the [latest release](https://github.com/medallyon/startup-apps-schedule/releases) or [clone this repository](https://github.com/medallyon/startup-apps-schedule/clone).
+1. Download the [latest release](https://github.com/medallyon/startup-apps-schedule/releases) or clone this repository:
+```shell
+git clone https://github.com/medallyon/startup-apps-schedule.git
+```
 
 ### Create a new schedule
 
