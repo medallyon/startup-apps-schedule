@@ -19,7 +19,7 @@ function startsWithinTheNextSecond(schedule)
 
 (async function()
 {
-	const appGroups = await fs.readdir(APPS_PATH) ;
+	const appGroups = await fs.readdir(APPS_PATH);
 	if (appGroups.length === 0)
 		throw new Error("No apps found");
 
